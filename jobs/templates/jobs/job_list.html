@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% load jobs %}
+
+{% block content_primary %}
+
+    {% if pages.current.content.standfirst %}
+        <p class="standfirst">{{ pages.current.content.standfirst }}</p>
+    {% endif %}
+
+    {% job_list job_list %}
+
+{% endblock content_primary %}

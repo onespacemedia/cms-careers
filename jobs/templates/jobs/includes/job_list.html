@@ -1,0 +1,9 @@
+{% load html %}
+
+{% for job in job_list %}
+    <a href="{{ job.get_absolute_url }}">{{ job.title }}</a>
+    {% if job.location %}{{ job.location }}{% endif %}
+    {% if job.summary %}{{ job.summary }}{% endif %}
+    {{ job.description|html }}
+    {% if job.how_to_apply %}{{ job.how_to_apply|html }}{% endif %}
+{% endfor %}
