@@ -18,7 +18,8 @@ class JobAdmin(SearchMetaBaseAdmin):
                 "location",
                 "summary",
                 "description",
-                "how_to_apply"
+                "how_to_apply",
+                "order"
             )
         }),
         SearchMetaBaseAdmin.PUBLICATION_FIELDS,
