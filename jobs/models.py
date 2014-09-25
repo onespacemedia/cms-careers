@@ -35,7 +35,7 @@ class Job(SearchMetaBase):
     location = models.CharField(
         max_length=256,
         blank=True,
-        null=True,
+        null=True
     )
 
     summary = models.TextField(
@@ -47,8 +47,15 @@ class Job(SearchMetaBase):
 
     how_to_apply = HtmlField(
         blank=True,
-        null=True,
+        null=True
     )
+
+    order = models.PositiveIntegerField(
+        default=0
+    )
+
+    class Meta:
+        ordering = ('order',)
 
     def __unicode__(self):
         return self.title
