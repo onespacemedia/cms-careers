@@ -1,6 +1,6 @@
 from django.template import Library
 
-from jobs.models import Job
+from ..models import Job
 
 register = Library()
 
