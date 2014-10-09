@@ -1,3 +1,4 @@
+""" URLs used by the jobs app """
 from django.conf.urls import patterns, url
 
 from .views import JobListView, JobDetailView
