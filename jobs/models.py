@@ -21,6 +21,13 @@ class Jobs(ContentBase):
         null=True
     )
 
+    per_page = models.IntegerField(
+        "jobs per page",
+        default=5,
+        blank=True,
+        null=True
+    )
+
 
 class Job(SearchMetaBase):
     """ An Job """
