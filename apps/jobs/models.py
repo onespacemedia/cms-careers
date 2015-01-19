@@ -14,7 +14,7 @@ class Jobs(ContentBase):
     classifier = "apps"
 
     # The urlconf used to power this content's views.
-    urlconf = "jobs.urls"
+    urlconf = "{{ project_name }}.jobs.urls"
 
     standfirst = models.TextField(
         blank=True,
