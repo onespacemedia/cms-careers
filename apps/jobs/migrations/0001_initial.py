@@ -8,7 +8,7 @@ import cms.models.fields
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('pages', '__first__'),
+        ('pages', '0001_initial'),
     ]
 
     operations = [
@@ -31,17 +31,19 @@ class Migration(migrations.Migration):
                 ('summary', models.TextField(null=True, blank=True)),
                 ('description', cms.models.fields.HtmlField()),
                 ('how_to_apply', cms.models.fields.HtmlField(null=True, blank=True)),
+                ('order', models.PositiveIntegerField(default=0)),
             ],
             options={
-                'abstract': False,
+                'ordering': ('order',),
             },
             bases=(models.Model,),
         ),
         migrations.CreateModel(
             name='Jobs',
             fields=[
-                ('page', models.OneToOneField(related_name=b'+', primary_key=True, serialize=False, editable=False, to='pages.Page')),
+                ('page', models.OneToOneField(related_name='+', primary_key=True, serialize=False, editable=False, to='pages.Page')),
                 ('standfirst', models.TextField(null=True, blank=True)),
+                ('per_page', models.IntegerField(default=5, null=True, verbose_name=b'jobs per page', blank=True)),
             ],
             options={
                 'abstract': False,
