@@ -17,7 +17,7 @@ class ApplicationTestCase(TestCase):
             self.page = Page.objects.create(
                 content_type=content_type,
                 title='Foo',
-                url_title='foo',
+                slug='foo',
             )
 
             self.job_page = Jobs.objects.create(
