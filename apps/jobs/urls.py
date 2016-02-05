@@ -1,7 +1,6 @@
-""" URLs used by the jobs app """
 from django.conf.urls import url
 
-from .views import JobListView, JobDetailView
+from .views import JobDetailView, JobListView
 
 urlpatterns = [
     url(r"^$", JobListView.as_view(), name='job_list'),

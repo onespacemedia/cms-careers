@@ -1,5 +1,4 @@
-""" Models used by the jobs app """
-from django.views.generic import ListView, DetailView
+from django.views.generic import DetailView, ListView
 
 from .models import Job
 

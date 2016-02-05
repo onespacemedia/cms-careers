@@ -1,7 +1,5 @@
-""" Admin settings for the jobs app """
-from django.contrib import admin
-
 from cms.admin import SearchMetaBaseAdmin
+from django.contrib import admin
 
 from .models import Job
 

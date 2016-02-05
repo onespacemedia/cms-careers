@@ -1,10 +1,9 @@
+from cms import externals
+from cms.apps.pages.models import Page
 from django.contrib.contenttypes.models import ContentType
 from django.test import TestCase
 
 from ..models import Job, Jobs
-
-from cms import externals
-from cms.apps.pages.models import Page
 
 
 class ApplicationTestCase(TestCase):

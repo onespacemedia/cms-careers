@@ -1,13 +1,11 @@
-""" Models used by the jobs app. """
-from cms.apps.pages.models import ContentBase
-from django.db import models
-
-from cms.models import SearchMetaBase, HtmlField
-
 import watson
+from cms.apps.pages.models import ContentBase
+from cms.models import HtmlField, SearchMetaBase
+from django.db import models
 
 
 class Jobs(ContentBase):
+
     """ A base for Jobs """
 
     # The heading that the admin places this content under.
@@ -28,9 +26,11 @@ class Jobs(ContentBase):
         null=True
     )
 
+    def __unicode__(self):
+        return self.__str__()
+
 
 class Job(SearchMetaBase):
-    """ An Job """
 
     page = models.ForeignKey(
         Jobs
@@ -74,16 +74,8 @@ class Job(SearchMetaBase):
         return self.title
 
     def get_absolute_url(self):
-        """ Gets the url of a Job
-
-            Returns:
-                url of Person
-
-        """
-        return "{}{}/".format(
-            self.page.page.get_absolute_url(),
-            self.url_title
-        )
-
+        return self.page.page.reverse('job', kwargs={
+            'url_title': self.url_title,
+        })
 
 watson.register(Job)
