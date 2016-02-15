@@ -3,7 +3,7 @@ from cms.apps.pages.models import Page
 from django.contrib.contenttypes.models import ContentType
 from django.test import TestCase
 
-from ..models import Job, Jobs
+from ..models import Career, Careers
 
 
 class ApplicationTestCase(TestCase):
@@ -13,20 +13,20 @@ class ApplicationTestCase(TestCase):
         # will simply be '/'
 
         with externals.watson.context_manager("update_index")():
-            content_type = ContentType.objects.get_for_model(Jobs)
+            content_type = ContentType.objects.get_for_model(Careers)
             self.page = Page.objects.create(
                 content_type=content_type,
                 title='Foo',
                 slug='foo',
             )
 
-            self.job_page = Jobs.objects.create(
+            self.job_page = Careers.objects.create(
                 page=self.page,
             )
 
-        self.job = Job.objects.create(
+        self.job = Career.objects.create(
             page=self.job_page,
-            url_title='foo-bar',
+            slug='foo-bar',
             title='Tester',
         )
 

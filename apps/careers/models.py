@@ -4,15 +4,13 @@ from cms.models import HtmlField, SearchMetaBase
 from django.db import models
 
 
-class Jobs(ContentBase):
-
-    """ A base for Jobs """
+class Careers(ContentBase):
 
     # The heading that the admin places this content under.
     classifier = "apps"
 
     # The urlconf used to power this content's views.
-    urlconf = "{{ project_name }}.apps.jobs.urls"
+    urlconf = "phixflow.apps.careers.urls"
 
     standfirst = models.TextField(
         blank=True,
@@ -20,27 +18,27 @@ class Jobs(ContentBase):
     )
 
     per_page = models.IntegerField(
-        "jobs per page",
+        "careers per page",
         default=5,
         blank=True,
         null=True
     )
 
     def __unicode__(self):
-        return self.__str__()
+        return self.page.title
 
 
-class Job(SearchMetaBase):
+class Career(SearchMetaBase):
 
     page = models.ForeignKey(
-        Jobs
+        Careers
     )
 
     title = models.CharField(
         max_length=256,
     )
 
-    url_title = models.CharField(
+    slug = models.CharField(
         max_length=256,
         unique=True
     )
@@ -58,10 +56,7 @@ class Job(SearchMetaBase):
 
     description = HtmlField()
 
-    how_to_apply = HtmlField(
-        blank=True,
-        null=True
-    )
+    email_address = models.EmailField()
 
     order = models.PositiveIntegerField(
         default=0
@@ -74,8 +69,8 @@ class Job(SearchMetaBase):
         return self.title
 
     def get_absolute_url(self):
-        return self.page.page.reverse('job', kwargs={
-            'url_title': self.url_title,
+        return self.page.page.reverse('career', kwargs={
+            'slug': self.slug,
         })
 
-watson.register(Job)
+watson.register(Career)
