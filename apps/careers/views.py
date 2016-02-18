@@ -12,5 +12,3 @@ class CareerListView(ListView):
 
 class CareerDetailView(DetailView):
     model = Career
-    slug_field = 'url_title'
-    slug_url_kwarg = 'url_title'
