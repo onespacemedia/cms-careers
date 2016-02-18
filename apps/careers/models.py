@@ -10,7 +10,7 @@ class Careers(ContentBase):
     classifier = "apps"
 
     # The urlconf used to power this content's views.
-    urlconf = "phixflow.apps.careers.urls"
+    urlconf = "{{ project_name }}.apps.careers.urls"
 
     standfirst = models.TextField(
         blank=True,
