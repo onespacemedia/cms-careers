@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block content_primary %}
+{% block main %}
 
 {% if pages.current.content.standfirst %}
   <p class="standfirst">{{ pages.current.content.standfirst }}</p>
@@ -17,4 +17,4 @@
   {% if career.how_to_apply %}{{ career.how_to_apply|html }}{% endif %}
 {% endfor %}
 
-{% endblock content_primary %}
+{% endblock %}
