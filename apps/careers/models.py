@@ -7,10 +7,10 @@ from django.db import models
 class Careers(ContentBase):
 
     # The heading that the admin places this content under.
-    classifier = "apps"
+    classifier = 'apps'
 
     # The urlconf used to power this content's views.
-    urlconf = "{{ project_name }}.apps.careers.urls"
+    urlconf = '{{ project_name }}.apps.careers.urls'
 
     standfirst = models.TextField(
         blank=True,
@@ -18,7 +18,7 @@ class Careers(ContentBase):
     )
 
     per_page = models.IntegerField(
-        "careers per page",
+        'careers per page',
         default=5,
         blank=True,
         null=True
