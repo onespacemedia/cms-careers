@@ -6,12 +6,12 @@ from .models import Career
 
 @admin.register(Career)
 class CareerAdmin(SearchMetaBaseAdmin):
-    prepopulated_fields = {'slug': ('title',)}
+    prepopulated_fields = {'slug': ['title']}
 
     fieldsets = (
         (None, {
-            'fields': ('page', 'title', 'slug', 'location', 'summary',
-                       'description', 'email_address', 'order')
+            'fields': ['page', 'title', 'slug', 'location', 'summary',
+                       'description', 'email_address', 'order']
         }),
         SearchMetaBaseAdmin.PUBLICATION_FIELDS,
         SearchMetaBaseAdmin.SEO_FIELDS,
