@@ -1,34 +1,26 @@
-import watson
 from cms.apps.pages.models import ContentBase
-from cms.models import HtmlField, SearchMetaBase
+from cms.models import HtmlField, PageBase
 from django.db import models
+from watson import search as watson
 
 
 class Careers(ContentBase):
 
-    # The heading that the admin places this content under.
     classifier = 'apps'
-
-    # The urlconf used to power this content's views.
     urlconf = '{{ project_name }}.apps.careers.urls'
 
-    standfirst = models.TextField(
-        blank=True,
-        null=True
-    )
-
-    per_page = models.IntegerField(
+    per_page = models.PositiveIntegerField(
         'careers per page',
-        default=5,
+        default=10,
         blank=True,
         null=True
     )
 
-    def __unicode__(self):
+    def __str__(self):
         return self.page.title
 
 
-class Career(SearchMetaBase):
+class Career(PageBase):
 
     page = models.ForeignKey(
         Careers
@@ -63,13 +55,13 @@ class Career(SearchMetaBase):
     )
 
     class Meta:
-        ordering = ('order',)
+        ordering = ['order']
 
-    def __unicode__(self):
+    def __str__(self):
         return self.title
 
     def get_absolute_url(self):
-        return self.page.page.reverse('career', kwargs={
+        return self.page.page.reverse('career_detail', kwargs={
             'slug': self.slug,
         })
 
