@@ -4,7 +4,7 @@ from watson import search as watson
 
 
 class CareersConfig(AppConfig):
-    name = 'careers'
+    name = '{{ project_name }}.apps.careers'
 
     def ready(self):
         Career = self.get_model('Career')
