@@ -1,7 +1,8 @@
+from cms import sitemaps
 from cms.apps.pages.models import ContentBase
 from cms.models import HtmlField, PageBase
 from django.db import models
-from watson import search as watson
+from historylinks import shortcuts as historylinks
 
 
 class Careers(ContentBase):
@@ -65,4 +66,5 @@ class Career(PageBase):
             'slug': self.slug,
         })
 
-watson.register(Career)
+historylinks.register(Career)
+sitemaps.register(Career)
