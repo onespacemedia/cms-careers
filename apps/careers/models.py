@@ -27,15 +27,6 @@ class Career(PageBase):
         Careers
     )
 
-    title = models.CharField(
-        max_length=256,
-    )
-
-    slug = models.CharField(
-        max_length=256,
-        unique=True
-    )
-
     location = models.CharField(
         max_length=256,
         blank=True,
